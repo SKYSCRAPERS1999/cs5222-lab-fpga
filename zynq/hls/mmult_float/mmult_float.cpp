@@ -27,7 +27,9 @@ void mmult_hw (AXI_VAL in_stream[IS_SIZE], AXI_VAL out_stream[OS_SIZE])
 	// Hardware buffers
 	T offset_buf[CLASSES];
 	T weight_buf[CLASSES][FEAT];
+	#pragma HLS ARRAY_PARTITION variable=weight_buf block factor=8 dim=2
 	T in_buf[BATCH][FEAT];
+	#pragma HLS ARRAY_PARTITION variable=in_buf block factor=8 dim=2
 	T out_buf[BATCH][CLASSES];
 
 	// Input and output AXI stream indices
