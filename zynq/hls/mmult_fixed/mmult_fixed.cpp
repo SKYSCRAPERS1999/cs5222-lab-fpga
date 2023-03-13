@@ -21,9 +21,9 @@ void mmult_hw (AXI_VAL in_stream[IS_SIZE], AXI_VAL out_stream[OS_SIZE])
 	// Hardware memory buffers
 	out_T offset_buf[CLASSES];
 	w_T weight_buf[CLASSES][FEAT];
-	#pragma HLS ARRAY_PARTITION variable=weight_buf block factor=8 dim=2
+	#pragma HLS ARRAY_PARTITION variable=weight_buf block factor=32 dim=2
 	in_T in_buf[TILING][FEAT];
-	#pragma HLS ARRAY_PARTITION variable=in_buf block factor=8 dim=2
+	#pragma HLS ARRAY_PARTITION variable=in_buf block factor=32 dim=2
 	out_T out_buf[TILING][CLASSES];
 
 	// Union used for type conversion
