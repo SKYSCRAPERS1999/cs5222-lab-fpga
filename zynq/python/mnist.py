@@ -103,7 +103,7 @@ def getDataSet(args, mode):
             # Display the image
             show(img)
             # Print label
-            print 'Label: {}'.format(lab)
+            print ('Label: {}'.format(lab))
 
         data.append(datum)
         labels.append(label)
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
     # Fixed point computation
     # CSE 548: Todo: tweak the SCALE to get less than 20% classification error
-    SCALE = 0
+    SCALE = 16384
     # CSE 548 - Change me
     offset = reg.intercept_
     weight = reg.coef_
@@ -169,10 +169,10 @@ if __name__ == '__main__':
             fixed_errors += 1.
 
     # Produce stats
-    print 'Min/Max of coefficient values [{}, {}]'.format(reg.coef_.min(), reg.coef_.max())
-    print 'Min/Max of intersect values [{}, {}]'.format(reg.intercept_.min(),reg.intercept_.max())
-    print 'Misclassifications (float) = {0:.2f}%'.format(float_errors/len(test_labels)*100)
-    print 'Misclassifications (fixed) = {0:.2f}%'.format(fixed_errors/len(test_labels)*100)
+    print( 'Min/Max of coefficient values [{}, {}]'.format(reg.coef_.min(), reg.coef_.max()))
+    print( 'Min/Max of intersect values [{}, {}]'.format(reg.intercept_.min(),reg.intercept_.max()))
+    print( 'Misclassifications (float) = {0:.2f}%'.format(float_errors/len(test_labels)*100))
+    print( 'Misclassifications (fixed) = {0:.2f}%'.format(fixed_errors/len(test_labels)*100))
 
     # Dump the model and test data
     np.save('test_data', test_data)
